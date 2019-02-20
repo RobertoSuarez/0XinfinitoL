@@ -23,11 +23,7 @@ namespace XinfinitoL
         }
 
         //Inicio del Juego
-        public void start() {
-
-
-
-
+        public bool start() {
             buildLevel(width, height, score);
             Draw();
             ConsoleKeyInfo dato;
@@ -40,6 +36,7 @@ namespace XinfinitoL
                 Draw();
 
             } while (dato.Key != ConsoleKey.Escape);
+            return true;
         }
 
         //Lista todos los Rectangulo para realizar cambio en los rectangulos.
