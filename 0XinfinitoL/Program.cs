@@ -16,11 +16,11 @@ namespace XinfinitoL
             //l.logo(Console.LargestWindowWidth/2-15, 5);
 
             Menu ops = new Menu();
-            ops.op.Add(new opcion("opcion 1", ConsoleColor.Blue, g.start));
-            ops.op.Add(new opcion("opcion 2", ConsoleColor.Red, null));
-            ops.op.Add(new opcion("opcion 3", ConsoleColor.Cyan, null));
-            ops.op.Add(new opcion("opcion 4", ConsoleColor.Green, null));
-            ops.op.Add(new opcion("opcion 5", ConsoleColor.Magenta, null));
+            ops.op.Add(new opcion("opcion 1", ConsoleColor.Blue, ConsoleColor.DarkBlue, g.start));
+            ops.op.Add(new opcion("opcion 2", ConsoleColor.Blue, ConsoleColor.DarkBlue, g.start));
+            ops.op.Add(new opcion("opcion 3", ConsoleColor.Blue, ConsoleColor.DarkBlue, g.start));
+            ops.op.Add(new opcion("opcion 4", ConsoleColor.Blue, ConsoleColor.DarkBlue, g.start));
+            
 
             ops.run();
         }

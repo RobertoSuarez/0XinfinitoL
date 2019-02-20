@@ -10,7 +10,7 @@ namespace XinfinitoL
         {
         }
 
-        public void Draw() {
+        public void Draw(int posicion) {
             int px = -3, py = 3, scala = 2;
             for (int i = 0; i < op.Count; i++)
             {
@@ -23,7 +23,12 @@ namespace XinfinitoL
                 if ((px * scala) + op[i].txt.Length < Console.LargestWindowWidth)
                 {
                     Console.SetCursorPosition((px * scala), py);
-                    Console.ForegroundColor = op[i].hcolor;
+                    if (posicion == i) { 
+                        Console.ForegroundColor = op[i].hcolor;
+                    }else { 
+                        Console.ForegroundColor = op[i].bcolor;
+                    }
+                    //Console.ForegroundColor = op[i].hcolor;
                     Console.Write(op[i].txt);
                 }
             }
@@ -50,8 +55,8 @@ namespace XinfinitoL
 
         public void run() { 
             ConsoleKeyInfo dato;
-            Draw();
-            int posicion = 0, limite = op.Count;
+            int posicion = 0, limite = op.Count-1;
+            Draw(posicion);
             do
             {
                 dato = Console.ReadKey(true);
@@ -73,13 +78,13 @@ namespace XinfinitoL
                     case ConsoleKey.Enter:
                         op[posicion].funcionalidad();
                         Console.Clear();
-                        Draw();
+                        Draw(posicion);
                         break;
                     default:
                         break;
                 }
-                Draw();
-                Console.WriteLine(posicion);
+                Draw(posicion);
+                //Console.WriteLine(posicion);
 
             } while (dato.Key != ConsoleKey.Escape);
         }
@@ -91,10 +96,11 @@ namespace XinfinitoL
         public ConsoleColor hcolor;
         public ConsoleColor bcolor;
         public Func<bool> funcionalidad;
-        public opcion(String msg, ConsoleColor hc, Func<bool> f)
+        public opcion(String msg, ConsoleColor hc, ConsoleColor bc, Func<bool> f)
         {
             txt = msg;
             hcolor = hc;
+            bcolor = bc;
             funcionalidad = f;
         }
     }
