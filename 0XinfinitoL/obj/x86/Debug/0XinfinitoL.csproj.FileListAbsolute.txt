@@ -1,0 +1,6 @@
+/home/roberto/Projects/0XinfinitoL/0XinfinitoL/bin/Debug/0XinfinitoL.exe
+/home/roberto/Projects/0XinfinitoL/0XinfinitoL/bin/Debug/0XinfinitoL.pdb
+/home/roberto/Projects/0XinfinitoL/0XinfinitoL/obj/x86/Debug/0XinfinitoL.csprojAssemblyReference.cache
+/home/roberto/Projects/0XinfinitoL/0XinfinitoL/obj/x86/Debug/0XinfinitoL.csproj.CoreCompileInputs.cache
+/home/roberto/Projects/0XinfinitoL/0XinfinitoL/obj/x86/Debug/0XinfinitoL.exe
+/home/roberto/Projects/0XinfinitoL/0XinfinitoL/obj/x86/Debug/0XinfinitoL.pdb

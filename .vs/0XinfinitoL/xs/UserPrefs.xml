@@ -1,10 +1,14 @@
 ﻿<Properties StartupConfiguration="{2335B8AC-3889-4E42-B638-F51A9305BBE3}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="0XinfinitoL/Program.cs">
     <Files>
-      <File FileName="0XinfinitoL/Program.cs" Line="13" Column="1" />
+      <File FileName="0XinfinitoL/Program.cs" Line="10" Column="10" />
+      <File FileName="0XinfinitoL/game.cs" Line="5" Column="21" />
+      <File FileName="0XinfinitoL/opciones.cs" Line="4" Column="21" />
+      <File FileName="0XinfinitoL/Point.cs" Line="1" Column="1" />
+      <File FileName="0XinfinitoL/rect.cs" Line="5" Column="21" />
     </Files>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.ItemProperties.0XinfinitoL FirstBuild="True" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.ItemProperties.0XinfinitoL PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
