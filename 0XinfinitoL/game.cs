@@ -34,6 +34,12 @@ namespace XinfinitoL
                 Tick(dato); // marca o Cambio
                 checkCollisions();
                 Draw();
+                if (dato.Key == ConsoleKey.Escape) {
+                    width = 15;
+                    height = 10;
+                    score = 0;
+                    Rects.Clear();
+                }
 
             } while (dato.Key != ConsoleKey.Escape);
             return true;

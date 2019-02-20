@@ -10,7 +10,7 @@ namespace XinfinitoL
             Console.CursorVisible = false;
             Console.Clear();
 
-            game g = new game(10+5,10);
+            game g = new game(15,10);
             //g.start();
             //logos l = new logos();
             //l.logo(Console.LargestWindowWidth/2-15, 5);
