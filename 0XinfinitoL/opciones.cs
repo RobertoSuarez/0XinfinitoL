@@ -10,22 +10,27 @@ namespace XinfinitoL
         {
         }
 
-        public void Draw(int posicion) {
+        public void Draw(int posicion)
+        {
             int px = -3, py = 3, scala = 2;
             for (int i = 0; i < op.Count; i++)
             {
                 px += 6;
-                if((px*scala)+op[i].txt.Length > Console.LargestWindowWidth) {
+                if ((px * scala) + op[i].txt.Length > Console.LargestWindowWidth)
+                {
                     py += 2;
                     px = 0;
                 }
-                
+
                 if ((px * scala) + op[i].txt.Length < Console.LargestWindowWidth)
                 {
                     Console.SetCursorPosition((px * scala), py);
-                    if (posicion == i) { 
+                    if (posicion == i)
+                    {
                         Console.ForegroundColor = op[i].hcolor;
-                    }else { 
+                    }
+                    else
+                    {
                         Console.ForegroundColor = op[i].bcolor;
                     }
                     //Console.ForegroundColor = op[i].hcolor;
@@ -33,17 +38,19 @@ namespace XinfinitoL
                 }
             }
         }
-        
-        public void clear() {
+
+        public void clear()
+        {
             int px = -3, py = 3, scala = 2;
             for (int i = 0; i < op.Count; i++)
             {
                 px += 6;
-                if((px*scala)+op[i].txt.Length > Console.LargestWindowWidth) {
+                if ((px * scala) + op[i].txt.Length > Console.LargestWindowWidth)
+                {
                     py += 2;
                     px = 0;
                 }
-                
+
                 if ((px * scala) + op[i].txt.Length < Console.LargestWindowWidth)
                 {
                     Console.SetCursorPosition((px * scala), py);
@@ -53,25 +60,28 @@ namespace XinfinitoL
             }
         }
 
-        public void run() { 
+        public void run()
+        {
             ConsoleKeyInfo dato;
-            int posicion = 0, limite = op.Count-1;
+            int posicion = 0, limite = op.Count - 1;
             Draw(posicion);
             do
             {
                 dato = Console.ReadKey(true);
                 clear();
-                switch(dato.Key)
+                switch (dato.Key)
                 {
                     case ConsoleKey.LeftArrow:
                         //flecha izquierda
-                        if (posicion > 0) { 
+                        if (posicion > 0)
+                        {
                             posicion--;
                         }
                         break;
                     case ConsoleKey.RightArrow:
                         //Flecha derecha
-                        if (posicion < limite) { 
+                        if (posicion < limite)
+                        {
                             posicion++;
                         }
                         break;

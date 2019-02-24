@@ -9,6 +9,7 @@ namespace XinfinitoL
         // Rectangulos que se van a controlar en el Screen
         static private List<rect> Rects = new List<rect>();
         static private int width, height, score;    //size from maze
+        static private string nick;
 
         public game(int w, int h)
         {
@@ -18,12 +19,15 @@ namespace XinfinitoL
         }
 
         //Agregar Rectangulos
-        public void addRect(rect r) {
+        public void addRect(rect r)
+        {
             Rects.Add(r);
         }
 
         //Inicio del Juego
-        public bool start() {
+        public bool start()
+        {
+            GetDataUser();
             buildLevel(width, height, score);
             Draw();
             ConsoleKeyInfo dato;
@@ -34,7 +38,11 @@ namespace XinfinitoL
                 Tick(dato); // marca o Cambio
                 checkCollisions();
                 Draw();
-                if (dato.Key == ConsoleKey.Escape) {
+                if (dato.Key == ConsoleKey.Escape)
+                {
+                    Console.Clear();
+                    Console.WriteLine("{0} has llegado hasta el nivel {1} \n [Presione una tecla para continuar]", nick, score);
+                    Console.ReadKey(true);
                     width = 15;
                     height = 10;
                     score = 0;
@@ -45,15 +53,27 @@ namespace XinfinitoL
             return true;
         }
 
+        static void GetDataUser()
+        {
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.SetCursorPosition(Console.LargestWindowWidth / 3, 5);
+            Console.Write("Ingrese su nick: ");
+            nick = Console.ReadLine();
+            Console.Clear();
+        }
+
         //Lista todos los Rectangulo para realizar cambio en los rectangulos.
-        static void Tick(ConsoleKeyInfo c) {
-            foreach (rect rectangulo in Rects) {
+        static void Tick(ConsoleKeyInfo c)
+        {
+            foreach (rect rectangulo in Rects)
+            {
                 rectangulo.Tick(c);
             }
         }
 
         //Lista todos los Rectangulos y los Dibuja.
-        static void Draw() {
+        static void Draw()
+        {
             foreach (rect rectangulo in Rects)
             {
                 rectangulo.Draw();
@@ -64,9 +84,12 @@ namespace XinfinitoL
         public bool checkCollisions()
         {
             int count = 0;
-            foreach (rect p in Rects) {
-                foreach (rect c in Rects) {
-                    if (p == c) {
+            foreach (rect p in Rects)
+            {
+                foreach (rect c in Rects)
+                {
+                    if (p == c)
+                    {
                         continue;
                     }
                     int px = p.X(), py = p.Y(); // Posicion Del Rectangulo 1
@@ -74,7 +97,8 @@ namespace XinfinitoL
                     // Tamaños de los Rectangulos
                     int pw = p.W(), ph = p.H();
                     int cw = c.W(), ch = c.H();
-                    if (px < cx + cw && px + pw > cx && py < cy + ch && py + ph > cy) {
+                    if (px < cx + cw && px + pw > cx && py < cy + ch && py + ph > cy)
+                    {
                         //return true;
                         /* codigo que si funciona
                         if (p.GetColor() == ConsoleColor.Red) {
@@ -97,7 +121,8 @@ namespace XinfinitoL
                             }
                             return true;
                         }*/
-                        if (p.Collide(c.GetColor())) {
+                        if (p.Collide(c.GetColor()))
+                        {
                             foreach (var item in Rects)
                             {
                                 item.isDraw = false;
@@ -130,10 +155,13 @@ namespace XinfinitoL
                     if (path == '*')
                     {
                         addRect(new rect(i, j, 1, 1, false, ConsoleColor.White, ' '));
-                    } else if (path == 's')
+                    }
+                    else if (path == 's')
                     {
                         addRect(new rect(i, j, 1, 1, true, ConsoleColor.Red, ' '));
-                    } else if (path == 'l') {
+                    }
+                    else if (path == 'l')
+                    {
                         addRect(new rect(i, j, 1, 1, false, ConsoleColor.Blue, ' '));
                     }
                 }
@@ -151,12 +179,15 @@ namespace XinfinitoL
                     {
                         continue;
                     }
-                    try {
+                    try
+                    {
                         if (maze[point.X + i][point.Y + j] == '.')
                         {
                             continue;
                         }
-                    } catch {
+                    }
+                    catch
+                    {
                         continue;
                     }
                     res.Add(new Point(point.X + i, point.Y + j, point));
@@ -165,7 +196,8 @@ namespace XinfinitoL
             return res;
         }
 
-        static bool estaEnElLaberinto(int x, int y, int w, int h) {
+        static bool estaEnElLaberinto(int x, int y, int w, int h)
+        {
             return x >= 0 && x < w && y >= 0 && y < h;
         }
 
@@ -202,7 +234,8 @@ namespace XinfinitoL
                     c++;
                 }
                 Point opp = wall.opposite();
-                try {
+                try
+                {
                     if (maze[opp.X][opp.Y] == '*' && maze[wall.X][wall.Y] == '*')
                     {
                         maze[wall.X][wall.Y] = '.';
@@ -213,20 +246,23 @@ namespace XinfinitoL
                         }
                         last = opp;
                     }
-                } catch { }
+                }
+                catch { }
             }
             maze[last.X][last.Y] = 'l'; // Punto azul (llegada)
-            char[][] border = new char[maze.GetLength(0)+2][];
+            char[][] border = new char[maze.GetLength(0) + 2][];
 
             for (int i = 0; i < border.GetLength(0); i++)
             {
-                border[i] = new char[maze[0].GetLength(0)+2];
+                border[i] = new char[maze[0].GetLength(0) + 2];
                 for (int j = 0; j < border[i].GetLength(0); j++)
                 {
-                    if (i == 0 || i == maze.GetLength(0)+1 || j == 0 || j == maze[0].GetLength(0)+1)
+                    if (i == 0 || i == maze.GetLength(0) + 1 || j == 0 || j == maze[0].GetLength(0) + 1)
                     {
                         border[i][j] = '*';
-                    }else {
+                    }
+                    else
+                    {
                         border[i][j] = maze[i - 1][j - 1];
                     }
                 }
