@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 
 
@@ -6,6 +7,7 @@ namespace XinfinitoL
 {
     public class game
     {
+        static private string name = "data.txt";
         // Rectangulos que se van a controlar en el Screen
         static private List<rect> Rects = new List<rect>();
         static private int width, height, score;    //size from maze
@@ -41,7 +43,10 @@ namespace XinfinitoL
                 if (dato.Key == ConsoleKey.Escape)
                 {
                     Console.Clear();
-                    Console.WriteLine("{0} has llegado hasta el nivel {1} \n [Presione una tecla para continuar]", nick, score);
+                    Console.WriteLine("{0} has llegado hasta el nivel {1} \n[Presione una tecla para continuar]", nick, score);
+                    StreamWriter escritor = File.AppendText(name);
+                    escritor.WriteLine(nick + "," + score);
+                    escritor.Close();
                     Console.ReadKey(true);
                     width = 15;
                     height = 10;
