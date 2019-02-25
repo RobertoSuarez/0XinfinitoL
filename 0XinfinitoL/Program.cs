@@ -17,10 +17,8 @@ namespace XinfinitoL
 
             Menu ops = new Menu();
             ops.op.Add(new opcion("Jugar ", ConsoleColor.Blue, ConsoleColor.DarkBlue, g.start));
-            ops.op.Add(new opcion("opcion 2", ConsoleColor.Blue, ConsoleColor.DarkBlue, g.start));
-            ops.op.Add(new opcion("opcion 3", ConsoleColor.Blue, ConsoleColor.DarkBlue, g.start));
-            ops.op.Add(new opcion("opcion 4", ConsoleColor.Blue, ConsoleColor.DarkBlue, g.start));
-
+            ops.op.Add(new opcion("Lista de los jugadores", ConsoleColor.Blue, ConsoleColor.DarkBlue, g.GetList));
+            ops.op.Add(new opcion("Ayuda", ConsoleColor.Blue, ConsoleColor.DarkBlue, g.ayuda));
 
             ops.run();
         }

@@ -1,0 +1,38 @@
+
+	0XInfinitoL					Ayuda General
+
+	NOMBRE
+		0XInfinitoL - Juego de Terminal
+
+	SINOPSIS
+		0XInfinitoL es un juego en modo terminal, la logica del juego es que el usuario resuelva 
+		los laberintos que el juego va proponiendo en cada nivel.
+
+	DESCRIPCION
+		Parte principal del juego es el menu, para desplasarse en el menu se utiliza las flechas de 
+		movimento del teclado, la opcion selecionada estara con un color mas brillante que las 
+		demas opciones.
+	
+	REDIMENCION DE PANTALLA
+		Al hacer mas grande o mas pequeña la pantalla se distorciona los dibujos de la terminal
+		para la solucion de ese problema se utiliza la tecla < r >  para limpiarla y dibujar de nuevo
+		todo.
+	
+	Esc
+		La tecla <Esc> (escape) retrocede de cada pantalla que estes y si esta en el menu sale
+		del juego.
+	
+	OPCIONES
+		
+	-  Jugar  
+		inicia la parte del laberinto, lo primero que va a pedir es un nick, escribes tu nick y 
+		presionas enter, se genera el laberinto, las partes blancas son las paredes, el punto
+		azul es el punto de llegada, el punto rojo es el punto de inicio que se mueve con 
+		las flechas de movimiento del teclado, con las teclas < w, a, s, d > se puede mover 
+		todo el laberinto por toda la terminal e incluso fuera de la terminal.
+
+	- Lista de los jugadores 
+		Muestra todo los usuario que han jugado y el nivel al que han llegado.
+	
+	- Ayuda 
+		Muestra la ayuda que esta escrita en el archivo de texto ayuda.txt 

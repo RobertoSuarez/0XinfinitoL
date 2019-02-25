@@ -7,7 +7,7 @@ namespace XinfinitoL
 {
     public class game
     {
-        static private string name = "data.txt";
+        static private string nameFile = "data.txt";
         // Rectangulos que se van a controlar en el Screen
         static private List<rect> Rects = new List<rect>();
         static private int width, height, score;    //size from maze
@@ -29,6 +29,7 @@ namespace XinfinitoL
         //Inicio del Juego
         public bool start()
         {
+            Console.Clear();
             GetDataUser();
             buildLevel(width, height, score);
             Draw();
@@ -44,8 +45,8 @@ namespace XinfinitoL
                 {
                     Console.Clear();
                     Console.WriteLine("{0} has llegado hasta el nivel {1} \n[Presione una tecla para continuar]", nick, score);
-                    StreamWriter escritor = File.AppendText(name);
-                    escritor.WriteLine(nick + "," + score);
+                    StreamWriter escritor = File.AppendText(nameFile);
+                    escritor.WriteLine("{0}\t{1}", nick, score);
                     escritor.Close();
                     Console.ReadKey(true);
                     width = 15;
@@ -67,9 +68,59 @@ namespace XinfinitoL
             Console.Clear();
         }
 
+        public bool GetList()
+        {
+            try
+            {
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("\tLista de los jugadores");
+                Console.WriteLine("\tNick\tNivel");
+
+                StreamReader lector = File.OpenText(nameFile);
+                string data = String.Empty;
+                while ((data = lector.ReadLine()) != null)
+                {
+                    Console.WriteLine("\t{0}", data);
+                }
+                lector.Close();
+                Console.ReadKey(true);
+            }
+            catch (FileNotFoundException e)
+            {
+                Console.WriteLine("Error: " + e.Message);
+                Console.ReadKey(true);
+            }
+            return true;
+        }
+
+        public bool ayuda()
+        {
+            try
+            {
+                Console.Clear();
+                StreamReader lector = File.OpenText("ayuda.txt");
+                Console.ForegroundColor = ConsoleColor.White;
+                string data = String.Empty;
+                while ((data = lector.ReadLine()) != null)
+                {
+                    Console.WriteLine(data);
+                }
+                lector.Close();
+                Console.ReadKey(true);
+            }
+            catch (FileNotFoundException e)
+            {
+                Console.WriteLine("Error " + e.Message);
+                Console.ReadKey(true);
+            }
+            return true;
+        }
+
         //Lista todos los Rectangulo para realizar cambio en los rectangulos.
         static void Tick(ConsoleKeyInfo c)
         {
+
             foreach (rect rectangulo in Rects)
             {
                 rectangulo.Tick(c);
@@ -138,8 +189,7 @@ namespace XinfinitoL
                             height += 3;
                             score += 1;
                             buildLevel(width, height, score);
-                            Console.SetCursorPosition(0, 0);
-                            Console.WriteLine("Nivel: {0}", score);
+
                             return true;
                         }
                     }
@@ -151,6 +201,8 @@ namespace XinfinitoL
 
         public void buildLevel(int w, int h, int score)
         {
+            Console.SetCursorPosition(0, 0);
+            Console.Write("Nivel: {0}", score); Console.WriteLine("\tsalir del laberinto <Esc> (escape)");
             char[][] maze = generateMaze(w, h);
             for (int i = 0; i < maze.GetLength(0); i++)
             {

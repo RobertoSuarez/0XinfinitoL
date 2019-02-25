@@ -12,19 +12,21 @@ namespace XinfinitoL
 
         public void Draw(int posicion)
         {
-            int px = -3, py = 3, scala = 2;
+            int px = 0, py = 3, margen = 4;
+            int cl = 0;
+            foreach (var item in op) { cl += item.txt.Length; }
+            px = (Console.LargestWindowWidth / 2) - cl + 10;
             for (int i = 0; i < op.Count; i++)
             {
-                px += 6;
-                if ((px * scala) + op[i].txt.Length > Console.LargestWindowWidth)
+                if (px + op[i].txt.Length > Console.LargestWindowWidth)
                 {
                     py += 2;
-                    px = 0;
+                    px = 5;
                 }
 
-                if ((px * scala) + op[i].txt.Length < Console.LargestWindowWidth)
+                if (px + op[i].txt.Length < Console.LargestWindowWidth)
                 {
-                    Console.SetCursorPosition((px * scala), py);
+                    Console.SetCursorPosition(px, py);
                     if (posicion == i)
                     {
                         Console.ForegroundColor = op[i].hcolor;
@@ -36,27 +38,31 @@ namespace XinfinitoL
                     //Console.ForegroundColor = op[i].hcolor;
                     Console.Write(op[i].txt);
                 }
+                px += op[i].txt.Length + margen;
             }
         }
 
         public void clear()
         {
-            int px = -3, py = 3, scala = 2;
+            int px = 0, py = 3, margen = 4;
+            int cl = 0;
+            foreach (var item in op) { cl += item.txt.Length; }
+            px = (Console.LargestWindowWidth / 2) - cl + 10;
             for (int i = 0; i < op.Count; i++)
             {
-                px += 6;
-                if ((px * scala) + op[i].txt.Length > Console.LargestWindowWidth)
+                if (px + op[i].txt.Length > Console.LargestWindowWidth)
                 {
                     py += 2;
-                    px = 0;
+                    px = 5;
                 }
 
-                if ((px * scala) + op[i].txt.Length < Console.LargestWindowWidth)
+                if (px + op[i].txt.Length < Console.LargestWindowWidth)
                 {
-                    Console.SetCursorPosition((px * scala), py);
+                    Console.SetCursorPosition(px, py);
                     Console.ForegroundColor = ConsoleColor.Black;
                     Console.Write(op[i].txt);
                 }
+                px += op[i].txt.Length + margen;
             }
         }
 
@@ -89,6 +95,11 @@ namespace XinfinitoL
                         op[posicion].funcionalidad();
                         Console.Clear();
                         Draw(posicion);
+                        break;
+                    case ConsoleKey.R:
+                        Console.Clear();
+                        Draw(posicion);
+
                         break;
                     default:
                         break;
